@@ -1,0 +1,17 @@
+{
+    "ORIGIN_IMAGE": "xxx.png",
+    "process_info": {
+        "GLAYSCALE": "none",
+        "COLORWARM": "none",
+        "COLORCOLD": "none",
+        "VINTAGE": "none",
+        "SEPIA": "none",
+        "GRADATION": "none",
+        "BG_CUTOUT": "none",
+        "BINARIZATION": "none",
+        "bg_add": {
+            "BG": "on",
+            "ADD_IMAGE": "sample_add.png"
+        }
+    }
+}
