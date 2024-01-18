@@ -12,7 +12,8 @@
 <body>
     <div class="container">
         <div class="preview-area">
-            <img id="preview-image" src="{{ url_for('static', filename='preview/first_preview.png') }}" alt="Preview">
+            <img id="preview-image" src="{{ url_for('static', filename='preview/temporary.png') }}"
+                onerror="{{ this.src=url_for('static', filename='preview/first_preview.png') }}" alt="Preview">
         </div>
         <div class="controls-area">
             <form action="/processing" method="post" enctype="multipart/form-data">
