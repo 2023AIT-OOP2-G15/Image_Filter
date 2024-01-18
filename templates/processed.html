@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+</head>
+<body>
+    <h1>画像一覧</h1>
+    <button onclick="moveHome()">ホーム画面に移動</button>
+    <script>
+        // ボタンがクリックされたときに呼ばれる関数
+        function moveHome() {
+            // 新しい画面に遷移する
+            window.location.href = 'http://127.0.0.1:5000';
+        }
+      </script>
+    {% for image_path in image_paths %}
+        <img src="{{ url_for('static', filename=image_path) }}" alt="Image" width="150" height="150">
+    {% endfor %}
+</body>
+</html>
