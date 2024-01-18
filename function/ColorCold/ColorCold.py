@@ -26,10 +26,10 @@ def ColorCold(path):
                 if b>255:
                     b = 255
                 img[y,x] = b,g,r
-        if True:
-            cv2.imshow('Vintage Effect', img)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+        #if True:
+        #    cv2.imshow('Vintage Effect', img)
+        #    cv2.waitKey(0)
+        #    cv2.destroyAllWindows()
         output.append(img)
         #print(len(output))
     return output
