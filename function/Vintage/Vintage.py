@@ -26,3 +26,4 @@ def Vintage(image):
             img[y,x] = b,g,r
 
     adjust_image = cv2.convertScaleAbs(img,alpha=1.0,beta=-50)
+    return adjust_image
