@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+    <script defer src="{{ url_for('static', filename='main.js') }}"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img class="header_img" src="{{ url_for('static', filename='ga.png') }}" alt="">
+    </div>
+    <header>
+        <!-- ボタンリスト -->
+        <button class="header_button" href="1">ボタン1</button>
+        <button class="header_button" href="2">ボタン2</button>
+        <button class="header_button" href="3">ボタン3</button>
+        <!-- 必要に応じてボタンを追加 -->
+    </header>
+
+    <h1 >画像フィルターアプリ</h1>
+    <div class="start_button">
+        <button>スタート</button>
+    </div>
+    
+    <div class="d1">
+
+    </div>
+    <img src="{{ url_for('static', filename='ga.png') }}" alt="">
+</body>
+</html>
