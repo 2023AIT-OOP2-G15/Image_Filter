@@ -5,15 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Processing</title>
 </head>
 
 <body>
     <div class="container">
         <div class="preview-area">
-            <img id="preview-image" src="{{ url_for('static', filename='preview/temporary.png') }}"
-                onerror="{{ this.src=url_for('static', filename='preview/first_preview.png') }}" alt="Preview">
+            <img id="previewImage" alt="Preview" style="max-width: 100%;">
         </div>
         <div class="controls-area">
             <form action="/processing" method="post" enctype="multipart/form-data">
@@ -21,13 +20,32 @@
                 <button type="submit">Upload</button>
             </form>
             <!-- Add processing buttons here -->
-            <button onclick="processImage('blur')">Blur</button>
-            <button onclick="processImage('grayscale')">Grayscale</button>
+            <button onclick="processImage('BgAdd')">AddBackground</button>
+            <button onclick="processImage('BgCutout')">CutoutBackground</button>
+            <button onclick="processImage('Binarization')">Binarization</button>
+            <button onclick="processImage('ColorCold')">ColdColor</button>
+            <button onclick="processImage('ColorWarm')">WarmColor</button>
+            <button onclick="processImage('Grayscale')">Grayscale</button>
+            <button onclick="processImage('Gradation')">Gradation</button>
+            <button onclick="processImage('Sepia')">Sepia</button>
+            <button onclick="processImage('Vintage')">Vintage</button>
             <!-- Add more processing buttons as needed -->
             <button id="save-button">Save</button>
         </div>
     </div>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var image = document.getElementById("previewImage");
+            var firstPreviewPath = "{{ url_for('static', filename='preview/first_preview.png') }}";
+            var temporaryPath = "{{ url_for('static', filename='preview/temporary.png') }}";
+
+            image.src = temporaryPath;
+
+            image.onerror = function () {
+                // 画像の読み込みに失敗した場合、代替のパスに切り替える
+                image.src = firstPreviewPath;
+            };
+        });
         function previewFile() {
             var preview = document.getElementById('preview-image');
             var fileInput = document.querySelector('input[type=file]');
