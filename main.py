@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+
 import os
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['PREVIEW_FOLDER'] = 'static/preview'
 app.config['PROCESSED_FOLDER'] = 'static/processed'
+app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列を返したい場合は、こちらを設定しておく
 
 def get_preview_image():
     return os.path.join(app.config['PREVIEW_FOLDER'], 'temporary.png')
@@ -45,6 +47,12 @@ def view(filename):
     processed_image = os.path.join(app.config['PROCESSED_FOLDER'], filename)
     return render_template('view.html', processed_image=processed_image)
 
-if __name__ == '__main__':
-    app.run(debug=True)
 
+# http://127.0.0.1:5000/
+@app.route('/')
+def index():
+    return render_template("home.html")
+
+if __name__ == "__main__":
+    # debugモードが不要の場合は、debug=Trueを消してください
+    app.run(debug=True)

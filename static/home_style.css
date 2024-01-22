@@ -1,0 +1,51 @@
+
+/*一番外側*/
+body {
+    margin: 0px;
+}
+
+/* ヘッダーのスタイル */
+header {
+    background-color: skyblue;
+    padding: 0px;
+    text-align: left;
+    height: 100px;
+    margin: 0px;
+}
+
+/* ヘッダーの中の画像 */
+.header_img {
+    height: 100px;
+    margin-top: 100px;
+}
+
+/* ヘッダーの中のボタン */
+.header_button {
+    display: inline-block;
+    margin: 0 40px; /* ボタンの間の余白を調整 */
+    padding: 5px 10px;
+    background-color: white;
+    color: black;
+    border: on;
+    border-radius: 3px;
+    cursor: pointer;
+
+    margin-bottom: 20px;
+    height: 50px;
+}
+
+/* タイトル */
+h1 {
+    color: blue;
+    text-align: center;
+    font-size: 80px;
+}
+
+/* スタートボタン */
+.start_button {
+    text-align: center;
+}
+
+.d1 {
+    height: 24px;
+}
