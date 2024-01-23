@@ -38,7 +38,9 @@ Image_Filter
 │
 │
 ├─ templates
-│   └─ index.html
+│   ├─ home.html
+│   ├─ processing.html
+│   └─ view.html
 │
 ├─ function
 │   ├─ Glayscale
