@@ -6,20 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='view.css') }}">
 </head>
 
 <body>
-    <h1>Processed Image</h1>
-    <button onclick="moveHome()">ホーム画面に移動</button>
-    <script>
-        // ボタンがクリックされたときに呼ばれる関数
-        function moveHome() {
-            window.location.href = 'http://127.0.0.1:5000';
-        }
-      </script>
+    <!-- Header Start -->
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+            <a class="title">Processed Image</a>
+            <nav class="nav">
+                <ul class="nav__wrapper">
+                    <li class="nav__item"><a href="{{ url_for('home') }}">Home</a></li>
+                    <li class="nav__item"><a href="{{ url_for('processing') }}">Processing</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Header End -->
+
     {% for image_path in image_paths %}
-        <img src="{{ url_for('static', filename=image_path) }}" alt="Processed Image" width="150" height="150">
+        {% set clean_path = image_path.split('/').pop() %}
+        <div class="image-container">
+            <a href="#" class="image-link" data-image="{{ url_for('static', filename=image_path) }}">
+                <img src="{{ url_for('static', filename=image_path) }}" alt="Processed Image" width="150" height="138">
+            </a>
+            <div class="image-text" title="{{ clean_path }}">{{ clean_path }}</div>
+        </div>
     {% endfor %}
+
+    <!-- モーダル -->
+    <div id="imageModal" class="modal">
+        <img id="modalImage" src="" alt="Large Image">
+    </div>
+
+    <script>
+        // JavaScriptで画像をクリックしたときにモーダルを表示
+        document.addEventListener('DOMContentLoaded', function () {
+            const imageLinks = document.querySelectorAll('.image-link');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+
+            imageLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const imageUrl = this.getAttribute('data-image');
+                    modalImage.src = imageUrl;
+                    modal.style.display = 'flex';
+                });
+            });
+
+            modal.addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+        });
+    </script>
+
 </body>
 
 </html>
