@@ -1,6 +1,6 @@
 from PIL import Image
 
-def convert_to_Binarization(image_path='temporary.png', threshold_value=128):
+def convert_to_Binarization(image_path, threshold_value=128):
     # 画像を開く
     image = Image.open(image_path)
 
@@ -14,7 +14,7 @@ def convert_to_Binarization(image_path='temporary.png', threshold_value=128):
     return binarized_image
 
 # 関数を呼び出し
-result_image = convert_to_Binarization()
+#result_image = convert_to_Binarization()
 
 # 結果を保存（例として、適当なファイル名で保存しています）
-result_image.save('output_binary_image.png')
+#result_image.save('output_binary_image.png')

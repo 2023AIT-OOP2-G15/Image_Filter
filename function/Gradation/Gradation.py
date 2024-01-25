@@ -1,6 +1,6 @@
 from PIL import Image, ImageFilter
 
-def convert_to_gradation(image_path='temporary.png'):
+def convert_to_gradation(image_path):
     # 画像をロードする
     original_image = Image.open(image_path)
 
@@ -11,4 +11,4 @@ def convert_to_gradation(image_path='temporary.png'):
     return blurred_image
 
 # 関数を使用する例（'temporary.png' を読み込んで加工）
-processed_image = convert_to_gradation()
+#processed_image = convert_to_gradation()

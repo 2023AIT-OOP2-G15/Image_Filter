@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-
+import function.BgAdd.BgAdd,function.BgCutout.BgCutout,function.Binarization.Binarization,function.ColorCold.ColorCold,function.ColorWarm.ColorWarm,function.Glayscale.Glayscale,function.Gradation.Gradation,function.Sepia.Sepia,function.Vintage.Vintage
 import os
 
 app = Flask(__name__)
@@ -18,10 +18,6 @@ def save_processed_image(processed_name):
     processed_image = os.path.join(app.config['PROCESSED_FOLDER'], f'{processed_name}.png')
     os.replace(get_preview_image(), processed_image)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
 @app.route('/processing', methods=['GET', 'POST'])
 def processing():
     if request.method == 'POST':
@@ -32,6 +28,35 @@ def processing():
                 save_preview_image(file)
 
     return render_template('processing.html', preview_image=get_preview_image())
+
+@app.route('/processing?<int:func_num>', methods=['POST'])
+def filter(func_num):
+    if func_num == 1:
+        if 'file' in request.files:
+            file = request.files['file']
+            if file.filename != '':
+                save_preview_image(file)
+                processed_image = function.BgAdd.BgAdd.convert_to_BgAdd('static/preview/temporary.png',file)
+    elif func_num == 2:
+        processed_image = function.BgCutout.BgCutout('static/preview/temporary.png')
+    elif func_num == 3:
+        processed_image = function.Binarization.Binarization.convert_to_Binarization('static/preview/temporary.png')
+    elif func_num == 4:
+        processed_image = function.ColorCold.ColorCold.ColorCold('static/preview/temporary.png')
+    elif func_num == 5:
+        processed_image = function.ColorWarm.ColorWarm.ColorWarm('static/preview/temporary.png')
+    elif func_num == 6:
+        processed_image = function.Glayscale.Glayscale.convert_to_grayscale('static/preview/temporary.png')
+    elif func_num == 7:
+        processed_image = function.Gradation.Gradation.convert_to_gradation('static/preview/temporary.png')
+    elif func_num == 8:
+        processed_image = function.Sepia.Sepia.convert_to_Sepia('static/preview/temporary.png')
+    elif func_num == 9:
+        processed_image = function.Vintage.Vintage.Vintage('static/preview/temporary.png')
+    # 他の処理関数も同様に実装
+    os.remove(get_preview_image())
+    save_preview_image(processed_image)
+    return redirect(url_for('processing'))
 
 @app.route('/save', methods=['POST'])
 def save():
