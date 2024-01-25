@@ -18,10 +18,6 @@ def save_processed_image(processed_name):
     processed_image = os.path.join(app.config['PROCESSED_FOLDER'], f'{processed_name}.png')
     os.replace(get_preview_image(), processed_image)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
 @app.route('/processing', methods=['GET', 'POST'])
 def processing():
     if request.method == 'POST':
@@ -50,8 +46,9 @@ def view(filename):
 
 # http://127.0.0.1:5000/
 @app.route('/')
-def index():
-    return render_template("home.html")
+def home():
+    return render_template('home.html')
+
 
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください
