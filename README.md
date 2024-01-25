@@ -6,6 +6,10 @@
 1. 画像アップロード: ユーザーが自分のデバイスから画像をアップロード。
 2. フィルター適用: セピア、モノクロ、ビンテージなど、さまざまなフィルターを画像に適用。
 
+# 実行する際の前提条件、実行方法
+ターミナルでpython main.py を実行し、URLを発行
+ホーム画面→画像をアップロード→加工ボタンを押して保存ボタンを押す→名前をつけて保存すると一覧で確認できる
+
 # 各メンバーの役割
 
 |役割|名前(k00000)|内容|状況|備考|
@@ -27,9 +31,14 @@
 Image_Filter
 ├─ static
 │   ├─ style.css
+│   ├─ view.css
+│   ├─ home.css
+│   ├─ header.css
 │   │
 │   ├─ preview
 │   │    ├─preview.png
+│   │    ├─vintage.png
+│   │    ├─origin.png
 │   │    └─tenporary.png
 │   │
 │   ├─ processed
