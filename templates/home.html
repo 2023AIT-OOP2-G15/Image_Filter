@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
 
     <title>Home</title>
 </head>
@@ -15,13 +16,11 @@
         <div class="wrapper site-header__wrapper">
             <a href="/" class="app_name">画像フィルターアプリ（仮）</a>
             <nav class="nav">
-                <button class="nav__toggle" aria-expanded="false" type="button">
-                    menu
-                </button>
+                
                 <ul class="nav__wrapper">
                     <li class="nav__item"><a href="{{ url_for('home') }}">トップへ</a></li>
                     <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
-                    <li class="nav__item"><a href="{{ url_for('home') }}">保存先</a></li>
+                    <li class="nav__item"><a href="{{ url_for('view') }}">保存先</a></li>
                 </ul>
             </nav>
         </div>
