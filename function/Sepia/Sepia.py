@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 
-def convert_to_Sepia(image_path='temporary.png'):
+def convert_to_Sepia(image_path):
     # セピア色のカスタムRGB値
     sepia_rgb = (107, 74, 43)
 
@@ -26,4 +26,4 @@ def convert_to_Sepia(image_path='temporary.png'):
     # 画像オブジェクトに変換して返す
     return Image.fromarray(sepia_img.astype('uint8'))
 
-processed_image = convert_to_Sepia()
+#processed_image = convert_to_Sepia()
