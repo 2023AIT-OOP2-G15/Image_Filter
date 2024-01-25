@@ -21,7 +21,6 @@ def save_processed_image(processed_name):
 @app.route('/processing', methods=['GET', 'POST'])
 def processing():
     func_num=request.args.get('func_num')
-    print(func_num)
     if func_num==None:
         if request.method == 'POST':
           # Handle image upload
@@ -32,15 +31,14 @@ def processing():
 
         return render_template('processing.html', preview_image=get_preview_image())
     else:
-        print("test")
         if func_num == '1':
             if 'file' in request.files:
                 file = request.files['file']
                 if file.filename != '':
-                    save_preview_image(file)
-                    processed_image = function.BgAdd.BgAdd.convert_to_BgAdd('static/preview/temporary.png',file)
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'background.png'))
+                    processed_image = function.BgAdd.BgAdd.convert_to_BgAdd('static/preview/temporary.png','static/uploads/background.png')
         elif func_num == '2':
-            processed_image = function.BgCutout.BgCutout('static/preview/temporary.png')
+            processed_image = function.BgCutout.BgCutout.convert_to_BgCutout('static/preview/temporary.png')
         elif func_num == '3':
             processed_image = function.Binarization.Binarization.convert_to_Binarization('static/preview/temporary.png')
         elif func_num == '4':
@@ -49,7 +47,6 @@ def processing():
             processed_image = function.ColorWarm.ColorWarm.ColorWarm('static/preview/temporary.png')
         elif func_num == '6':
             processed_image = function.Glayscale.Glayscale.convert_to_grayscale('static/preview/temporary.png')
-            print("test2")
         elif func_num == '7':
             processed_image = function.Gradation.Gradation.convert_to_gradation('static/preview/temporary.png')
         elif func_num == '8':
@@ -57,14 +54,11 @@ def processing():
         elif func_num == '9':
             processed_image = function.Vintage.Vintage.Vintage('static/preview/temporary.png')
         else:
-            print("without")
             return redirect(url_for('processing'))
         # 他の処理関数も同様に実装
         os.remove(get_preview_image())
         save_preview_image(processed_image)
-        print("test3")
-        #return redirect(url_for('processing'))
-        return render_template('processing.html')
+        return render_template('processing.html', preview_image=get_preview_image())
 
 #@app.route('/processing/<int:func_num>', methods=['POST'])
 #def filter(func_num):

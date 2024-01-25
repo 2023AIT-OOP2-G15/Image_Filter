@@ -20,7 +20,7 @@
                 <button type="submit">Upload</button>
             </form>
             <!-- Add processing buttons here -->
-            <form action="{{ url_for('processing', func_num=1) }}" method="post">
+            <form action="{{ url_for('processing', func_num=1) }}" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" accept="image/*" onchange="previewFile()">
                 <button onclick="processImage('BgAdd')" type="submit">AddBackground</button>
             </form>
