@@ -1,32 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
-    <script defer src="{{ url_for('static', filename='main.js') }}"></script>
-    <title>Document</title>
+
+    <title>Home</title>
 </head>
+
 <body>
-    <div>
-        <img class="header_img" src="{{ url_for('static', filename='ga.png') }}" alt="">
-    </div>
-    <header>
-        <!-- ボタンリスト -->
-        <button class="header_button" href="1">ボタン1</button>
-        <button class="header_button" href="2">ボタン2</button>
-        <button class="header_button" href="3">ボタン3</button>
-        <!-- 必要に応じてボタンを追加 -->
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+            <a href="/" class="app_name">画像フィルターアプリ（仮）</a>
+            <nav class="nav">
+                <button class="nav__toggle" aria-expanded="false" type="button">
+                    menu
+                </button>
+                <ul class="nav__wrapper">
+                    <li class="nav__item"><a href="{{ url_for('home') }}">トップへ</a></li>
+                    <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
+                    <li class="nav__item"><a href="{{ url_for('home') }}">保存先</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <h1 >画像フィルターアプリ</h1>
-    <div class="start_button">
-        <button>スタート</button>
-    </div>
-    
-    <div class="d1">
+    <h1 class="bigtext">さあ、どのように写真を加工しましょう？</h1>
 
+    <div class="start_buttonarea">
+        <button class="start_button" onclick="moveProcessing()">はじめる</button>
     </div>
-    <img src="{{ url_for('static', filename='ga.png') }}" alt="">
+
+    <div class="sample_img">
+        <img src="{{ url_for('static', filename='origin.png') }}" alt="" width="400" height="300">
+        <div class="sample_textarea">
+            <p class="sample_text">左の写真が右のように！？</p>
+        </div>
+        <img src="{{ url_for('static', filename='vintage.png') }}" alt="" width="400" height="300">
+    </div>
+
+    <script>
+        let navToggle = document.querySelector(".nav__toggle");
+        let navWrapper = document.querySelector(".nav__wrapper");
+
+        navToggle.addEventListener("click", function () {
+            if (navWrapper.classList.contains("active")) {
+                this.setAttribute("aria-expanded", "false");
+                this.setAttribute("aria-label", "menu");
+                navWrapper.classList.remove("active");
+            } else {
+                navWrapper.classList.add("active");
+                this.setAttribute("aria-label", "close menu");
+                this.setAttribute("aria-expanded", "true");
+            }
+        });
+
+        function moveProcessing() {
+            window.location.href = 'http://127.0.0.1:5000/processing';
+        }
+    </script>
+
 </body>
+
 </html>

@@ -96,8 +96,9 @@ def view():
 
 # http://127.0.0.1:5000/
 @app.route('/')
-def index():
-    return render_template("home.html")
+def home():
+    return render_template('home.html')
+
 
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください
