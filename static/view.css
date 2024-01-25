@@ -1,8 +1,5 @@
-/* 
-** The Header Media Queries **
-** Tweak as per your needs **
-*/
 
+/*　拡大表示時のバックグラウンド　*/
 .modal {
     display: none;
     position: fixed;
@@ -15,11 +12,13 @@
     align-items: center;
 }
 
+/*　拡大表示画像　*/
 .modal img {
     max-width: 90%;
     max-height: 90%;
 }
 
+/*　表示画像　*/
 .image-container {
     bottom: -10px;
     position: relative;
@@ -30,21 +29,17 @@
     width: 150px;
     height: 150px;
     overflow: hidden;
-    border: 2px solid black; /* 必要に応じて境界線の太さを調整してください */
+    border: 2px solid black; 
 }
 
-.image-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
+/*　全体表示時の画像の縦横比率　*/
 .image-link img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/*　全体表示時の文字　*/
 .image-text {
     position: absolute;
     bottom: 0px;
@@ -52,8 +47,8 @@
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     padding: 5px;
-    width: 100%;
     box-sizing: border-box;
+    width: 100%;
     text-align: center;
     font-size: 12px;
     white-space: nowrap;
