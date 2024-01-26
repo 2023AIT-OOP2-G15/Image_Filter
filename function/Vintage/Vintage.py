@@ -11,7 +11,10 @@ def Vintage(path):
     for y in range(rows):
         for x in range(cols):
 
-            r,g,b = pixels[y,x]
+            if len(pixels[0,0]) != 3:
+                alpha,r,g,b = pixels[y,x]
+            else:
+                r,g,b = pixels[y,x]
             b = b-50
             g = g+1
             r = r+56
