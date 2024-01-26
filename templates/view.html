@@ -7,10 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='view.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
 </head>
 
 <body>
-    <!-- Header Start -->
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+            <a href="/" class="app_name">画像フィルターアプリ（仮）</a>
+            <nav class="nav">
+                
+                <ul class="nav__wrapper">
+                    <li class="nav__item"><a href="{{ url_for('home') }}">トップへ</a></li>
+                    <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
+                    <li class="nav__item"><a href="{{ url_for('view') }}">保存先</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Header Start 
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
             <a class="title">Processed Image</a>
@@ -22,7 +37,7 @@
             </nav>
         </div>
     </header>
-    <!-- Header End -->
+    Header End -->
 
     {% for image_path in image_paths %}
         {% set clean_path = image_path.split('/').pop() %}
