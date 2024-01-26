@@ -18,7 +18,7 @@ def ColorWarm(path):
                 alpha,r,g,b = pixels[y,x]
             else:
                 r,g,b = pixels[y,x]
-            r = r+100
+            r = r+25
             if r>255:
                 r = 255
             pixels[y,x] = r,g,b
