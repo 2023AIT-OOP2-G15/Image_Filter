@@ -30,7 +30,7 @@ def ColorCold(path):
                 alpha,r,g,b = pixels[y,x]
             else:
                 r,g,b = pixels[y,x]
-            b = b+100
+            b = b+25
             if b>255:
                 b = 255
             pixels[y,x] = r,g,b
