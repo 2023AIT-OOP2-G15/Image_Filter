@@ -14,7 +14,10 @@ def ColorWarm(path):
     for y in range(rows):
         for x in range(cols):
 
-            r,g,b = pixels[y,x]
+            if len(pixels[0,0]) != 3:
+                alpha,r,g,b = pixels[y,x]
+            else:
+                r,g,b = pixels[y,x]
             r = r+100
             if r>255:
                 r = 255
