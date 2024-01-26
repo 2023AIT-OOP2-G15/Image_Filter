@@ -24,21 +24,32 @@ def ColorCold(path):
     img = Image.open(path)
     rows,cols = img.size
     pixels = img.load()
-    for y in range(rows):
-        for x in range(cols):
-            if len(pixels[0,0]) != 3:
-                alpha,r,g,b = pixels[y,x]
-            else:
-                r,g,b = pixels[y,x]
-            b = b+25
-            if b>255:
-                b = 255
-            pixels[y,x] = r,g,b
+    #print(type(pixels[0,0]))
+    if type(pixels[0,0]) == int:
+        img = Image.new("RGB",(rows,cols),((0,0,0)))
+        for y in range(rows):
+            for x in range(cols):
+                if pixels[y,x] == 255:
+                    img.putpixel((y,x),(230,230,255))
+                else:
+                    img.putpixel((y,x),(0,0,25))
+    else:
+        for y in range(rows):
+            for x in range(cols):
+            
+                if len(pixels[0,0]) != 3:
+                    alpha,r,g,b = pixels[y,x]
+                else:
+                    r,g,b = pixels[y,x]
+                b = b+25
+                if b>255:
+                    b = 255
+                pixels[y,x] = r,g,b
         #if True:
         #    cv2.imshow('Vintage Effect', img)
         #    cv2.waitKey(0)
         #    cv2.destroyAllWindows()
     
         #print(len(output))
-    print(pixels[0,0])
+    
     return img
