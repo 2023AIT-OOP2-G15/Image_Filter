@@ -6,10 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
     <title>Processing</title>
 </head>
 
 <body>
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+            <a href="/" class="app_name">画像フィルターアプリ（仮）</a>
+            <nav class="nav">
+
+                <ul class="nav__wrapper">
+                    <li class="nav__item"><a href="{{ url_for('home') }}">トップへ</a></li>
+                    <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
+                    <li class="nav__item"><a href="{{ url_for('view') }}">保存先</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <div class="preview-area">
             <img id="previewImage" alt="Preview" style="max-width: 100%;">
@@ -20,7 +34,7 @@
                 <button type="submit">Upload</button>
             </form>
             <!-- Add processing buttons here -->
-            <form action="{{ url_for('processing', func_num=1) }}" method="post">
+            <form action="{{ url_for('processing', func_num=1) }}" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" accept="image/*" onchange="previewFile()">
                 <button onclick="processImage('BgAdd')" type="submit">AddBackground</button>
             </form>

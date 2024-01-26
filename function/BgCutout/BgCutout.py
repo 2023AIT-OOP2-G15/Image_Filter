@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
-def convert_to_BgCutout(image_path='temporary.png'):
+def convert_to_BgCutout(image_path):
     # 画像を開く
     image = Image.open(image_path)
 
@@ -31,7 +31,7 @@ def convert_to_BgCutout(image_path='temporary.png'):
     return result_image_pil
 
 # 関数を呼び出し
-result_image = convert_to_BgCutout()
+#result_image = convert_to_BgCutout()
 
 # 結果を保存（例として、適当なファイル名で保存しています）
-result_image.save('output_bg_cutout_image_opencv.png')
+#result_image.save('output_bg_cutout_image_opencv.png')
