@@ -30,14 +30,17 @@ def processing():
                 if file.filename != '':
                     save_preview_image(file)
                 else:
-                    flash('ファイルが選択されていません！', 'error')
+                    flash('ファイルが選択されていません', 'error')
                     return redirect(url_for('processing'))
             else:
-                flash('ファイルが選択されていません！', 'error')
+                flash('ファイルが選択されていません', 'error')
                 return redirect(url_for('processing'))
 
         return render_template('processing.html', preview_image=get_preview_image())
     else:
+        if not os.path.exists('static/preview/temporary.png'):
+            flash('ファイルをアップロードしてください', 'error')
+            return redirect(url_for('processing'))
         if func_num == '1':
             if 'file' in request.files:
                 file = request.files['file']
@@ -45,10 +48,10 @@ def processing():
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'background.png'))
                     processed_image = function.BgAdd.BgAdd.convert_to_BgAdd('static/preview/temporary.png','static/uploads/background.png')
                 else:
-                    flash('ファイルが選択されていません！', 'error')
+                    flash('ファイルが選択されていません', 'error')
                     return redirect(url_for('processing'))
             else:
-                flash('ファイルが選択されていません！', 'error')
+                flash('ファイルが選択されていません', 'error')
                 return redirect(url_for('processing'))
         elif func_num == '2':
             processed_image = function.BgCutout.BgCutout.convert_to_BgCutout('static/preview/temporary.png')
@@ -80,6 +83,9 @@ def processing():
 @app.route('/save', methods=['POST'])
 def save():
     if request.method == 'POST':
+        if not os.path.exists('static/preview/temporary.png'):
+            flash('ファイルをアップロードしてから保存してください', 'error')
+            return redirect(url_for('processing'))
         processed_name = request.form['processed_name']
         save_processed_image(processed_name)
         return redirect(url_for('view', filename=f'{processed_name}.png'))
