@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request,flash, redirect, url_for, jsonify
 import function.BgAdd.BgAdd,function.BgCutout.BgCutout,function.Binarization.Binarization,function.ColorCold.ColorCold,function.ColorWarm.ColorWarm,function.Glayscale.Glayscale,function.Gradation.Gradation,function.Sepia.Sepia,function.Vintage.Vintage
 import os
 
 app = Flask(__name__)
+app.secret_key = "super_secret_key"  # Flashメッセージを使用するための秘密鍵
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['PREVIEW_FOLDER'] = 'static/preview'
 app.config['PROCESSED_FOLDER'] = 'static/processed'
@@ -28,6 +29,12 @@ def processing():
                 file = request.files['file']
                 if file.filename != '':
                     save_preview_image(file)
+                else:
+                    flash('ファイルが選択されていません！', 'error')
+                    return redirect(url_for('processing'))
+            else:
+                flash('ファイルが選択されていません！', 'error')
+                return redirect(url_for('processing'))
 
         return render_template('processing.html', preview_image=get_preview_image())
     else:
@@ -37,6 +44,12 @@ def processing():
                 if file.filename != '':
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'background.png'))
                     processed_image = function.BgAdd.BgAdd.convert_to_BgAdd('static/preview/temporary.png','static/uploads/background.png')
+                else:
+                    flash('ファイルが選択されていません！', 'error')
+                    return redirect(url_for('processing'))
+            else:
+                flash('ファイルが選択されていません！', 'error')
+                return redirect(url_for('processing'))
         elif func_num == '2':
             processed_image = function.BgCutout.BgCutout.convert_to_BgCutout('static/preview/temporary.png')
         elif func_num == '3':
