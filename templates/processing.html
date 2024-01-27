@@ -15,8 +15,10 @@
         <div class="wrapper site-header__wrapper">
             <div class="app_name">
                 <a href="{{ url_for('home') }}">
-                    <img src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-4.png') }}" alt="" height="70">
-                    <img src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-6.png') }}" alt="" height="60">
+                    <img src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-4.png') }}"
+                        alt="" height="70">
+                    <img src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-6.png') }}"
+                        alt="" height="60">
                 </a>
             </div>
             <nav class="nav">
@@ -25,7 +27,7 @@
                     <div class="nav_item_border">
                         <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
                     </div>
-                    <li class="nav__item" ><a href="{{ url_for('view') }}">保存先</a></li>
+                    <li class="nav__item"><a href="{{ url_for('view') }}">保存先</a></li>
                 </ul>
             </nav>
         </div>
@@ -51,31 +53,31 @@
             <!-- Add processing buttons here -->
             <form action="{{ url_for('processing', func_num=1) }}" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" accept="image/*" onchange="previewFile()">
-                <button onclick="processImage('BgAdd')" type="submit">背景追加</button>
+                <button type="submit">背景追加</button>
             </form>
             <form action="{{ url_for('processing', func_num=2) }}" method="post">
-                <button onclick="processImage('BgCutout')" type="submit">背景切り取り</button>
+                <button type="submit">背景切り取り</button>
             </form>
             <form action="{{ url_for('processing', func_num=3) }}" method="post">
-                <button onclick="processImage('Binarization')" type="submit">二値化</button>
+                <button type="submit">二値化</button>
             </form>
             <form action="{{ url_for('processing', func_num=4) }}" method="post">
-                <button onclick="processImage('ColorCold')" type="submit">寒色フィルタ</button>
+                <button type="submit">寒色フィルタ</button>
             </form>
             <form action="{{ url_for('processing', func_num=5) }}" method="post">
-                <button onclick="processImage('ColorWarm')" type="submit">暖色フィルタ</button>
+                <button type="submit">暖色フィルタ</button>
             </form>
             <form action="{{ url_for('processing', func_num=6) }}" method="post">
-                <button onclick="processImage('Grayscale')" type="submit">グレースケール化</button>
+                <button type="submit">グレースケール化</button>
             </form>
             <form action="{{ url_for('processing', func_num=7) }}" method="post">
-                <button onclick="processImage('Gradation')" type="submit">ぼかしフィルタ</button>
+                <button type="submit">ぼかしフィルタ</button>
             </form>
             <form action="{{ url_for('processing', func_num=8) }}" method="post">
-                <button onclick="processImage('Sepia')" type="submit">セピアフィルタ</button>
+                <button type="submit">セピアフィルタ</button>
             </form>
             <form action="{{ url_for('processing', func_num=9) }}" method="post">
-                <button onclick="processImage('Vintage')" type="submit">ビンテージフィルタ</button>
+                <button type="submit">ビンテージフィルタ</button>
             </form>
             <!-- Add more processing buttons as needed -->
             <button id="save-button">保存</button>
@@ -111,14 +113,8 @@
             }
         }
 
-        function processImage(effect) {
-            // Implement image processing logic here
-            // Update the preview with the processed image
-            alert('Image processing logic for ' + effect);
-        }
-
         document.getElementById('save-button').addEventListener('click', function () {
-            var processedName = prompt('Enter a name for the processed image:');
+            var processedName = prompt('保存する際の画像名を入力してください:');
             if (processedName) {
                 var form = document.createElement('form');
                 form.action = '/save';
