@@ -1,10 +1,22 @@
 
-.bigtext {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 50px;
-    font-weight: bold;
+/* h1文字のスタイル */
+@media (min-width:570px) {
+    .bigtext {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-size: 4vmax;
+        font-weight: bold;
+    }
+}
+@media (max-width:569px) {
+    .bigtext {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-size: 25px;
+        font-weight: bold;
+    }
 }
 
 /* スタートボタン */
@@ -17,7 +29,7 @@
     width: 200px;
     height: 60px;
     color: white;
-    background-color: rgb(61, 61, 225);
+    background-color: rgb(47, 89, 241);
     border: on;
     border-color: rgb(199, 195, 195);
     border-radius: 100px;
@@ -26,21 +38,109 @@
     font-weight:bold;
 }
 
-.sample_img {
-    display:flex;
-    justify-content: center;
-    /* 画像サイズはHTML側で指定 */
+/* サンプル画像全体の空間 */
+/* 画面の横幅が1000px以上なら要素を横並びに */
+@media (min-width:1000px) {
+    .sample_imgarea {
+        display:flex;
+        justify-content: center;
+    }
+    .sample_textarea {
+        width: 400px;
+    }
+    .sample_text {
+        font-weight: bold;
+        font-size: 25px;
+        margin-top: 145px;
+    }
+}
+/* 画面の横幅が999px以下なら要素を縦並びに */
+@media (max-width:999px) {
+    .sample_imgarea {
+        display: block;
+        text-align: center;
+    }
+    .sample_text {
+        font-weight: bold;
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 .sample_textarea {
-    width: 400px;
     text-align: center;
 }
 
-.sample_text {
-    margin-top: 145px;
-    font-size: 25px;
-    font-weight: bold;
+.sample_img {
+    border-radius: 10px;
+    /* 画像サイズはHTML側で指定 */
 }
 
 
+/* アプリ紹介部分の空間 */
+/* 画面の横幅が1000px以上なら要素を横並びに */
+@media (min-width:1000px) {
+    .explanation_area {
+        display:flex;
+        justify-content: center;
+    }
+    .explanation_text_area {
+        width: 400px;
+        height: 350px;
+        /*border: solid;*/
+    }
+    .explanation_text {
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        text-align: left;
+    }
+    .explanation_text2 {
+        font-size: 25px;
+        text-align: left;
+        margin-bottom: 40px;
+    }
+    .blank {
+        width: 80px;
+    }
+}
+/* 画面の横幅が999px以下なら要素を縦並びに */
+@media (max-width:999px) {
+    .explanation_area {
+        display: block;
+        text-align: center;
+    }
+    .explanation_text {
+        font-weight: bold;
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .explanation_text2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    .blank {
+        height: 10px;
+    }
+}
+
+.explanation_area {
+    margin-top: 80px;
+}
+
+.explanation_text_area {
+    text-align: center;
+}
+
+.explanation_img {
+    border-radius: 100px;
+    /* 画像サイズはHTML側で指定 */
+}
+
+/* 下の余白 */
+.bottom_area {
+    height: 100px;
+}

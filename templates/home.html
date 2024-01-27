@@ -14,13 +14,19 @@
 <body>
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-            <a href="/" class="app_name">画像フィルターアプリ（仮）</a>
+            <div class="app_name">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-4.png') }}" alt="" height="70">
+                    <img src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-6.png') }}" alt="" height="60">
+                </a>
+            </div>
             <nav class="nav">
-                
                 <ul class="nav__wrapper">
                     <li class="nav__item"><a href="{{ url_for('home') }}">トップへ</a></li>
-                    <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
-                    <li class="nav__item"><a href="{{ url_for('view') }}">保存先</a></li>
+                    <div class="nav_item_border">
+                        <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
+                    </div>
+                    <li class="nav__item" ><a href="{{ url_for('view') }}">保存先</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,33 +38,58 @@
         <button class="start_button" onclick="moveProcessing()">はじめる</button>
     </div>
 
-    <div class="sample_img">
-        <img src="{{ url_for('static', filename='origin.png') }}" alt="" width="400" height="300">
+    <div class="sample_imgarea">
+        <img class="sample_img" src="{{ url_for('static', filename='origin.png') }}" alt="" width="400" height="300">
         <div class="sample_textarea">
-            <p class="sample_text">左の写真が右のように！？</p>
+            <p class="sample_text" id="changetext">左の写真が右のように！？</p>
         </div>
-        <img src="{{ url_for('static', filename='vintage.png') }}" alt="" width="400" height="300">
+        <img class="sample_img" src="{{ url_for('static', filename='vintage.png') }}" alt="" width="400" height="300">
     </div>
 
+    <div class="explanation_area">
+        <div class="explanation_text_area">
+            <p class="explanation_text">これであなたも<br>インスタグラマーになれます</p>
+            <p class="explanation_text2">フォトマジックでは、<br>あなたが最高に映える写真を手軽に作成できます。</p>
+            <p class="explanation_text2">操作は簡単、<br>たったの5ステップ!</p>
+        </div>
+        <div class="blank" ><!-- 空白です --></div>
+        <img class="explanation_img" src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-2.png') }}" alt="" width="350" height="350">
+    </div>
+
+    <h1 class="bigtext">早速フォトマジックを使ってみよう！</h1>
+
+    <div class="start_buttonarea">
+        <button class="start_button" onclick="moveProcessing()">はじめる</button>
+    </div>
+
+    <div class="bottom_area"><!-- 下の余白です --></div>
+
     <script>
-        let navToggle = document.querySelector(".nav__toggle");
-        let navWrapper = document.querySelector(".nav__wrapper");
-
-        navToggle.addEventListener("click", function () {
-            if (navWrapper.classList.contains("active")) {
-                this.setAttribute("aria-expanded", "false");
-                this.setAttribute("aria-label", "menu");
-                navWrapper.classList.remove("active");
-            } else {
-                navWrapper.classList.add("active");
-                this.setAttribute("aria-label", "close menu");
-                this.setAttribute("aria-expanded", "true");
-            }
-        });
-
+        
+        // スタートボタンをクリックした時、加工ページへ移動
         function moveProcessing() {
-            window.location.href = 'http://127.0.0.1:5000/processing';
+            window.location.href = '/processing';
         }
+
+        // 
+        function changeText() {
+            //画面サイズを取得
+            var windowWidth = window.innerWidth;
+
+            //画面サイズが指定した幅より小さい場合、テキストを変更
+            if(windowWidth <= 999) {
+                document.getElementById("changetext").innerHTML = "上の写真が下のように！？";
+            }else {
+                document.getElementById("changetext").innerHTML = "左の写真が右のように！？";
+            }
+        }
+
+        // 画面のサイズが変更されたときにchangeText関数を呼び出す
+        window.addEventListener("resize", changeText);
+
+        // ページを読み込んだ最初にもchangeText関数を呼び出す
+        document.addEventListener("DOMContentLoaded", changeText);
+
     </script>
 
 </body>
