@@ -40,39 +40,39 @@
         <div class="controls-area">
             <form action="/processing" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" accept="image/*" onchange="previewFile()">
-                <button type="submit">Upload</button>
+                <button type="submit">アップロード</button>
             </form>
             <!-- Add processing buttons here -->
             <form action="{{ url_for('processing', func_num=1) }}" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" accept="image/*" onchange="previewFile()">
-                <button onclick="processImage('BgAdd')" type="submit">AddBackground</button>
+                <button onclick="processImage('BgAdd')" type="submit">背景追加</button>
             </form>
             <form action="{{ url_for('processing', func_num=2) }}" method="post">
-                <button onclick="processImage('BgCutout')" type="submit">CutoutBackground</button>
+                <button onclick="processImage('BgCutout')" type="submit">背景切り取り</button>
             </form>
             <form action="{{ url_for('processing', func_num=3) }}" method="post">
-                <button onclick="processImage('Binarization')" type="submit">Binarization</button>
+                <button onclick="processImage('Binarization')" type="submit">二値化</button>
             </form>
             <form action="{{ url_for('processing', func_num=4) }}" method="post">
-                <button onclick="processImage('ColorCold')" type="submit">ColdColor</button>
+                <button onclick="processImage('ColorCold')" type="submit">寒色フィルタ</button>
             </form>
             <form action="{{ url_for('processing', func_num=5) }}" method="post">
-                <button onclick="processImage('ColorWarm')" type="submit">WarmColor</button>
+                <button onclick="processImage('ColorWarm')" type="submit">暖色フィルタ</button>
             </form>
             <form action="{{ url_for('processing', func_num=6) }}" method="post">
-                <button onclick="processImage('Grayscale')" type="submit">Grayscale</button>
+                <button onclick="processImage('Grayscale')" type="submit">グレースケール化</button>
             </form>
             <form action="{{ url_for('processing', func_num=7) }}" method="post">
-                <button onclick="processImage('Gradation')" type="submit">Gradation</button>
+                <button onclick="processImage('Gradation')" type="submit">ぼかしフィルタ</button>
             </form>
             <form action="{{ url_for('processing', func_num=8) }}" method="post">
-                <button onclick="processImage('Sepia')" type="submit">Sepia</button>
+                <button onclick="processImage('Sepia')" type="submit">セピアフィルタ</button>
             </form>
             <form action="{{ url_for('processing', func_num=9) }}" method="post">
-                <button onclick="processImage('Vintage')" type="submit">Vintage</button>
+                <button onclick="processImage('Vintage')" type="submit">ビンテージフィルタ</button>
             </form>
             <!-- Add more processing buttons as needed -->
-            <button id="save-button">Save</button>
+            <button id="save-button">保存</button>
         </div>
     </div>
     <script>
