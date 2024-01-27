@@ -13,13 +13,19 @@
 <body>
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
-            <a href="/" class="app_name">画像フィルターアプリ（仮）</a>
+            <div class="app_name">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-4.png') }}" alt="" height="70">
+                    <img src="{{ url_for('static', filename='White Black Minimalist Modern Capture Photo Studio Logo-6.png') }}" alt="" height="60">
+                </a>
+            </div>
             <nav class="nav">
-
                 <ul class="nav__wrapper">
                     <li class="nav__item"><a href="{{ url_for('home') }}">トップへ</a></li>
-                    <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
-                    <li class="nav__item"><a href="{{ url_for('view') }}">保存先</a></li>
+                    <div class="nav_item_border">
+                        <li class="nav__item"><a href="{{ url_for('processing') }}">画像の加工</a></li>
+                    </div>
+                    <li class="nav__item" ><a href="{{ url_for('view') }}">保存先</a></li>
                 </ul>
             </nav>
         </div>

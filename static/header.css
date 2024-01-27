@@ -114,8 +114,8 @@ body {
 
 /* 4 */
 .app_name {
-    font-weight: bold;
-    font-size: 25px; 
+    margin-left: 0;
+    text-align: left;
 }
   
 .site-header {
@@ -127,24 +127,41 @@ body {
     padding-top: 1rem;
     padding-bottom: 1rem; 
 }
-    @media (min-width: 600px) {
-        .site-header__wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 0;
-            padding-bottom: 0;
-        } 
-    }
+
 @media (min-width: 600px) {
-    .nav__wrapper {
-        display: flex; 
-    } 
+  .site-header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  } 
 }
-  
+
+@media (min-width: 600px) {
+  .nav__wrapper {
+    display: flex; 
+  } 
+}
+
 .nav__item a {
     display: block;
     padding: 1.5rem 1rem; 
     font-size: 20px;
+    font-weight: bold;
 }
 
+@media (min-width: 600px) {
+  .nav_item_border {
+    border-left: solid;
+    border-right: solid;
+    border-color: rgb(164, 187, 187);
+  }
+}
+@media (max-width:599px) {
+  .nav_item_border {
+    border-top: solid;
+    border-bottom: solid;
+    border-color: rgb(164, 187, 187);
+  }
+}
